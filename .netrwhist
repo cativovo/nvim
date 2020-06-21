@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/cativovo/webdev/tutorial/modern-js/src'
+let g:netrw_dirhist_1='/home/cativovo/webdev/tutorial/modern-js'
+let g:netrw_dirhist_0='/home/cativovo/webdev/tutorial/modern-js/src'
+let g:netrw_dirhist_9='/home/cativovo/webdev/tutorial/modern-js'
+let g:netrw_dirhist_8='/home/cativovo/webdev/tutorial/modern-js/src'
+let g:netrw_dirhist_7='/home/cativovo/webdev/tutorial/modern-js'
+let g:netrw_dirhist_6='/home/cativovo/webdev/tutorial/modern-js/src'
+let g:netrw_dirhist_5='/home/cativovo/webdev/tutorial/modern-js'
+let g:netrw_dirhist_4='/home/cativovo/webdev/tutorial/modern-js/src'
+let g:netrw_dirhist_3='/home/cativovo/webdev/tutorial/modern-js'
