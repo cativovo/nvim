@@ -45,7 +45,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
-Plug 'prettier/vim-prettier'
+" Plug 'prettier/vim-prettier'
 Plug 'mattn/emmet-vim'
 
 "  I AM SO SORRY FOR DOING COLOR SCHEMES IN MY VIMRC, BUT I HAVE
@@ -109,8 +109,8 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 map <A-b> :NERDTreeToggle<CR>
 nnoremap <Leader>ps :Rg<SPACE>
-nnoremap <C-p> :Files<CR>
-nnoremap <Leader>pf :GFiles<CR>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <Leader>pf :Files<CR>
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
@@ -120,7 +120,7 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " Prettier
-nnoremap <leader>p :PrettierAsync<CR>
+nnoremap <leader>p :Prettier<CR>
 
 " Vim with me
 nnoremap <leader>vwm :colorscheme gruvbox<bar>:set background=dark<CR>
@@ -176,6 +176,9 @@ fun! TrimWhitespace()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
+
+" Remap Emmet Leader
+let g:user_emmet_leader_key='<C-K>'
 
 augroup highlight_yank
     autocmd!
