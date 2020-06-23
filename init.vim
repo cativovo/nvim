@@ -12,11 +12,9 @@ set expandtab
 set smartindent
 set nu
 set nowrap
-set smartcase
 set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
-set undofile
 set incsearch
 set termguicolors
 set scrolloff=8
@@ -48,6 +46,7 @@ Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
+Plug 'preservim/nerdcommenter'
 
 "  I AM SO SORRY FOR DOING COLOR SCHEMES IN MY VIMRC, BUT I HAVE
 "  TOOOOOOOOOOOOO
@@ -122,8 +121,11 @@ vnoremap K :m '<-2<CR>gv=gv
 " Copy system clipboard
 vnoremap  <leader>y  "+y
 
-" Prettier
+" Prettier from CoC
 nnoremap <leader>p :Prettier<CR>
+
+" Toggle comment
+nnoremap <C-_>   <Plug>NERDCommenterToggle
 
 " Vim with me
 nnoremap <leader>vwm :colorscheme gruvbox<bar>:set background=dark<CR>
