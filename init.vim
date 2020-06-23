@@ -44,20 +44,23 @@ Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
-Plug 'vim-airline/vim-airline'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
 
 "  I AM SO SORRY FOR DOING COLOR SCHEMES IN MY VIMRC, BUT I HAVE
 "  TOOOOOOOOOOOOO
+Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'vim-airline/vim-airline'
 Plug 'flazz/vim-colorschemes'
 
-Plug 'gruvbox-community/gruvbox'
 call plug#end()
+
+" NerdCommenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
 
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
@@ -100,6 +103,8 @@ let g:vrfr_rg = 'true'
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
+" ripgrep must be installed
+" https://github.com/BurntSushi/ripgrep
 nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>phw :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>h :wincmd h<CR>
