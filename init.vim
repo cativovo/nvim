@@ -18,6 +18,7 @@ set undodir=~/.vim/undodir
 set incsearch
 set termguicolors
 set scrolloff=8
+set ignorecase
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -125,7 +126,8 @@ vnoremap  <leader>y  "+y
 nnoremap <leader>p :Prettier<CR>
 
 " Toggle comment
-nnoremap <C-_>   <Plug>NERDCommenterToggle
+nmap <C-_> <Plug>NERDCommenterToggle
+vmap <C-_> <Plug>NERDCommenterToggle
 
 " Vim with me
 nnoremap <leader>vwm :colorscheme gruvbox<bar>:set background=dark<CR>
