@@ -186,6 +186,41 @@ function! s:show_documentation()
   endif
 endfunction
 
+"Scroll documentation
+nnoremap <silent><expr> <C-d> coc#util#has_float() ? coc#util#float_scroll(1) : "<C-d>"
+nnoremap <silent><expr> <C-u> coc#util#has_float() ? coc#util#float_scroll(0) : "<C-u>"
+" inoremap <silent><expr> <down> coc#util#has_float() ? <SID>coc_float_scroll(1) : "\<down>"
+" inoremap <silent><expr> <up> coc#util#has_float() ? <SID>coc_float_scroll(0) : "\<up>"
+" vnoremap <silent><expr> <down> coc#util#has_float() ? <SID>coc_float_scroll(1) : "\<down>"
+" vnoremap <silent><expr> <up> coc#util#has_float() ? <SID>coc_float_scroll(0) : "\<up>"
+
+function! s:coc_float_scroll(forward) abort
+  let float = coc#util#get_float()
+  if !float | return '' | endif
+  let buf = nvim_win_get_buf(float)
+  let buf_height = nvim_buf_line_count(buf)
+  let win_height = nvim_win_get_height(float)
+  if buf_height < win_height | return '' | endif
+  let pos = nvim_win_get_cursor(float)
+  if a:forward
+    if pos[0] == 1
+      let pos[0] += 3 * win_height / 4
+    elseif pos[0] + win_height / 2 + 1 < buf_height
+      let pos[0] += win_height / 2 + 1
+    endif
+    let pos[0] = pos[0] < buf_height ? pos[0] : buf_height
+  else
+    if pos[0] == buf_height
+      let pos[0] -= 3 * win_height / 4
+    elseif pos[0] - win_height / 2 + 1  > 1
+      let pos[0] -= win_height / 2 + 1
+    endif
+    let pos[0] = pos[0] > 1 ? pos[0] : 1
+  endif
+  call nvim_win_set_cursor(float, pos)
+  return ''
+endfunction
+
 " Sweet Sweet FuGITive
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
