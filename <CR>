@@ -127,6 +127,9 @@ vnoremap K :m '<-2<CR>gv=gv
 " Copy system clipboard
 vnoremap  <leader>y  "+y
 
+" Prettier from CoC
+nnoremap <leader>p :Prettier | :w<CR>
+
 " Toggle comment
 nmap <C-_> <Plug>NERDCommenterToggle
 vmap <C-_> <Plug>NERDCommenterToggle
@@ -148,18 +151,7 @@ inoremap <silent><expr> <TAB>
             \ <SID>check_back_space() ? "\<TAB>" :
             \ coc#refresh()
 
-
-" Prettier from CoC
-nnoremap <A-p> :Prettier<CR>
-nnoremap <C-s> :call PrettierAndSave()<CR>
-
-function PrettierAndSave()
-    execute ':CocCommand prettier.formatFile'
-    write
-endfunction
-
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <C-space> coc#refresh()
 
