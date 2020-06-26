@@ -148,6 +148,14 @@ inoremap <silent><expr> <TAB>
             \ <SID>check_back_space() ? "\<TAB>" :
             \ coc#refresh()
 
+" Organize imports
+nnoremap <A-O> :call OrganizeImportsAndPrettier()<CR>
+
+function OrganizeImportsAndPrettier()
+    execute ':CocCommand tsserver.organizeImports'
+    sleep 50m
+    execute ':CocCommand prettier.formatFile'
+endfunction
 
 " Prettier from CoC
 nnoremap <A-p> :Prettier<CR>
