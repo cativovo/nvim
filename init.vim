@@ -153,7 +153,7 @@ nnoremap <A-O> :call OrganizeImportsAndPrettier()<CR>
 
 function OrganizeImportsAndPrettier()
     execute ':CocCommand tsserver.organizeImports'
-    sleep 50m
+    sleep 100m
     execute ':CocCommand prettier.formatFile'
 endfunction
 
