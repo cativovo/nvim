@@ -124,6 +124,9 @@ nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kk
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+" Close current buffer
+nnoremap  <leader>bd  :bd<CR>
+
 " Copy to system clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>y  "+y
