@@ -266,6 +266,9 @@ let g:user_emmet_settings = {
 \  'typescript' : {
 \      'extends' : 'tsx',
 \  },
+\  'html' : {
+\      'quote_char': '',
+\  },
 \}
 
 
