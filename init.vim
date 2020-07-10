@@ -257,6 +257,18 @@ endfun
 " Remap Emmet Leader
 let g:user_emmet_leader_key='<C-K>'
 
+" .jsx and .tsx support in emmet
+" class -> className when using emmet in .jsx and .tsx files
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\  'typescript' : {
+\      'extends' : 'tsx',
+\  },
+\}
+
+
 augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 50)
