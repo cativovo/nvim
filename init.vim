@@ -103,6 +103,9 @@ let g:vrfr_rg = 'true'
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
+let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.9}}
+let $FZF_DEFAULT_OPTS='--reverse'
+
 " ripgrep must be installed
 " https://github.com/BurntSushi/ripgrep
 nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
@@ -124,9 +127,6 @@ nnoremap <Leader>rp :resize 100<CR>
 nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-
-" Close current buffer
-nnoremap  <leader>bd  :bd<CR>
 
 " Copy to system clipboard
 vnoremap  <leader>y  "+y
