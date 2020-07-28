@@ -62,6 +62,11 @@ call plug#end()
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
+
+" NerdTree
+" Show hidden files/folders by default
+let g:NERDTreeShowHidden=1
+
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
