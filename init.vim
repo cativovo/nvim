@@ -66,6 +66,8 @@ let g:NERDSpaceDelims = 1
 " NerdTree
 " Show hidden files/folders by default
 let g:NERDTreeShowHidden=1
+" Show line numbers
+let NERDTreeShowLineNumbers=1
 
 let g:gruvbox_contrast_dark = 'medium'
 if exists('+termguicolors')
