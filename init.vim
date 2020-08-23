@@ -47,6 +47,7 @@ Plug 'preservim/nerdtree'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
+Plug 'andymass/vim-matchup'
 
 "  I AM SO SORRY FOR DOING COLOR SCHEMES IN MY VIMRC, BUT I HAVE
 "  TOOOOOOOOOOOOO
