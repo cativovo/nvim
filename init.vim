@@ -214,9 +214,13 @@ function! s:show_documentation()
   endif
 endfunction
 
+"Go inside of float
+nnoremap <silent><expr> coc#util#has_float() ? coc#util#float_jump() : "<C-w>p"
+
+
 "Scroll documentation
-nnoremap <silent><expr> <C-d> coc#util#has_float() ? coc#util#float_scroll(1) : "<C-d>"
-nnoremap <silent><expr> <C-u> coc#util#has_float() ? coc#util#float_scroll(0) : "<C-u>"
+" nnoremap <silent><expr> <C-d> coc#util#has_float() ? coc#util#float_scroll(1) : "<C-d>"
+" nnoremap <silent><expr> <C-u> coc#util#has_float() ? coc#util#float_scroll(0) : "<C-u>"
 " inoremap <silent><expr> <down> coc#util#has_float() ? <SID>coc_float_scroll(1) : "\<down>"
 " inoremap <silent><expr> <up> coc#util#has_float() ? <SID>coc_float_scroll(0) : "\<up>"
 " vnoremap <silent><expr> <down> coc#util#has_float() ? <SID>coc_float_scroll(1) : "\<down>"
