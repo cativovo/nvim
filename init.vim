@@ -215,7 +215,7 @@ function! s:show_documentation()
 endfunction
 
 "Go inside of float
-nnoremap <silent><expr> coc#util#has_float() ? coc#util#float_jump() : "<C-w>p"
+nnoremap <silent><expr> <CR> coc#util#has_float() ? coc#util#float_jump() : "<C-w>p"
 
 
 "Scroll documentation
