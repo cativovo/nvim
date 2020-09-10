@@ -1,5 +1,4 @@
 syntax on
-
 set guicursor=
 set noshowmatch
 set relativenumber
@@ -36,9 +35,7 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tweekmonster/gofmt.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -117,6 +114,7 @@ let $FZF_DEFAULT_OPTS='--reverse'
 " ripgrep must be installed
 " https://github.com/BurntSushi/ripgrep
 nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+nnoremap <Leader>ps :Rg<SPACE>
 nnoremap <leader>phw :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>h :wincmd h<CR>
@@ -125,7 +123,6 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 map <A-b> :NERDTreeToggle<CR>
-nnoremap <Leader>ps :Rg<SPACE>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <Leader>pf :Files<CR>
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
@@ -135,6 +132,9 @@ nnoremap <Leader>rp :resize 100<CR>
 nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+nnoremap <leader>/ /<C-R>=expand("<cword>")<CR><CR>
+nnoremap <C-f> :BLines <CR>
+nnoremap <leader>f :BLines <C-R>=expand("<cword>")<CR><CR>
 
 " Copy to system clipboard
 vnoremap  <leader>y  "+y
@@ -226,32 +226,32 @@ nnoremap <silent><expr> <CR> coc#util#has_float() ? coc#util#float_jump() : "<C-
 " vnoremap <silent><expr> <down> coc#util#has_float() ? <SID>coc_float_scroll(1) : "\<down>"
 " vnoremap <silent><expr> <up> coc#util#has_float() ? <SID>coc_float_scroll(0) : "\<up>"
 
-function! s:coc_float_scroll(forward) abort
-  let float = coc#util#get_float()
-  if !float | return '' | endif
-  let buf = nvim_win_get_buf(float)
-  let buf_height = nvim_buf_line_count(buf)
-  let win_height = nvim_win_get_height(float)
-  if buf_height < win_height | return '' | endif
-  let pos = nvim_win_get_cursor(float)
-  if a:forward
-    if pos[0] == 1
-      let pos[0] += 3 * win_height / 4
-    elseif pos[0] + win_height / 2 + 1 < buf_height
-      let pos[0] += win_height / 2 + 1
-    endif
-    let pos[0] = pos[0] < buf_height ? pos[0] : buf_height
-  else
-    if pos[0] == buf_height
-      let pos[0] -= 3 * win_height / 4
-    elseif pos[0] - win_height / 2 + 1  > 1
-      let pos[0] -= win_height / 2 + 1
-    endif
-    let pos[0] = pos[0] > 1 ? pos[0] : 1
-  endif
-  call nvim_win_set_cursor(float, pos)
-  return ''
-endfunction
+" function! s:coc_float_scroll(forward) abort
+  " let float = coc#util#get_float()
+  " if !float | return '' | endif
+  " let buf = nvim_win_get_buf(float)
+  " let buf_height = nvim_buf_line_count(buf)
+  " let win_height = nvim_win_get_height(float)
+  " if buf_height < win_height | return '' | endif
+  " let pos = nvim_win_get_cursor(float)
+  " if a:forward
+    " if pos[0] == 1
+      " let pos[0] += 3 * win_height / 4
+    " elseif pos[0] + win_height / 2 + 1 < buf_height
+      " let pos[0] += win_height / 2 + 1
+    " endif
+    " let pos[0] = pos[0] < buf_height ? pos[0] : buf_height
+  " else
+    " if pos[0] == buf_height
+      " let pos[0] -= 3 * win_height / 4
+    " elseif pos[0] - win_height / 2 + 1  > 1
+      " let pos[0] -= win_height / 2 + 1
+    " endif
+    " let pos[0] = pos[0] > 1 ? pos[0] : 1
+  " endif
+  " call nvim_win_set_cursor(float, pos)
+  " return ''
+" endfunction
 
 " Sweet Sweet FuGITive
 nmap <leader>gj :diffget //3<CR>
