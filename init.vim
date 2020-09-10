@@ -109,7 +109,7 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
 let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.9}}
-let $FZF_DEFAULT_OPTS='--reverse'
+let $FZF_DEFAULT_OPTS='--reverse --bind tab:down,btab:up'
 
 " ripgrep must be installed
 " https://github.com/BurntSushi/ripgrep
