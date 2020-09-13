@@ -54,6 +54,15 @@ Plug 'phanviet/vim-monokai-pro'
 Plug 'vim-airline/vim-airline'
 Plug 'flazz/vim-colorschemes'
 
+
+let g:coc_global_extensions = [
+  \ 'coc-css',
+  \ 'coc-json',
+  \ 'coc-prettier',
+  \ 'coc-tsserver',
+  \ 'coc-styled-components',
+  \ ]
+
 call plug#end()
 
 " NerdCommenter
