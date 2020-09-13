@@ -136,6 +136,9 @@ nnoremap <leader>/ /<C-R>=expand("<cword>")<CR><CR>
 nnoremap <C-f> :BLines <CR>
 nnoremap <leader>f :BLines <C-R>=expand("<cword>")<CR><CR>
 
+" Map control-s to save file
+nnoremap <C-s> :w<CR>
+
 " Copy to system clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>y  "+y
@@ -169,23 +172,10 @@ inoremap <silent><expr> <TAB>
             \ coc#refresh()
 
 " Organize imports
-nnoremap <A-O> :call OrganizeImportsAndPrettier()<CR>
-
-function OrganizeImportsAndPrettier()
-    execute ':CocCommand tsserver.organizeImports'
-    sleep 100m
-    execute ':CocCommand prettier.formatFile'
-endfunction
+nnoremap <A-O> :CocCommand tsserver.organizeImports<CR>
 
 " Prettier from CoC
 nnoremap <A-p> :Prettier<CR>
-nnoremap <C-s> :call PrettierAndSave()<CR>
-
-function PrettierAndSave()
-    execute ':CocCommand prettier.formatFile'
-    write
-endfunction
-
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -217,42 +207,6 @@ endfunction
 "Go inside of float
 nnoremap <silent><expr> <CR> coc#util#has_float() ? coc#util#float_jump() : "<C-w>p"
 
-
-"Scroll documentation
-" nnoremap <silent><expr> <C-d> coc#util#has_float() ? coc#util#float_scroll(1) : "<C-d>"
-" nnoremap <silent><expr> <C-u> coc#util#has_float() ? coc#util#float_scroll(0) : "<C-u>"
-" inoremap <silent><expr> <down> coc#util#has_float() ? <SID>coc_float_scroll(1) : "\<down>"
-" inoremap <silent><expr> <up> coc#util#has_float() ? <SID>coc_float_scroll(0) : "\<up>"
-" vnoremap <silent><expr> <down> coc#util#has_float() ? <SID>coc_float_scroll(1) : "\<down>"
-" vnoremap <silent><expr> <up> coc#util#has_float() ? <SID>coc_float_scroll(0) : "\<up>"
-
-" function! s:coc_float_scroll(forward) abort
-  " let float = coc#util#get_float()
-  " if !float | return '' | endif
-  " let buf = nvim_win_get_buf(float)
-  " let buf_height = nvim_buf_line_count(buf)
-  " let win_height = nvim_win_get_height(float)
-  " if buf_height < win_height | return '' | endif
-  " let pos = nvim_win_get_cursor(float)
-  " if a:forward
-    " if pos[0] == 1
-      " let pos[0] += 3 * win_height / 4
-    " elseif pos[0] + win_height / 2 + 1 < buf_height
-      " let pos[0] += win_height / 2 + 1
-    " endif
-    " let pos[0] = pos[0] < buf_height ? pos[0] : buf_height
-  " else
-    " if pos[0] == buf_height
-      " let pos[0] -= 3 * win_height / 4
-    " elseif pos[0] - win_height / 2 + 1  > 1
-      " let pos[0] -= win_height / 2 + 1
-    " endif
-    " let pos[0] = pos[0] > 1 ? pos[0] : 1
-  " endif
-  " call nvim_win_set_cursor(float, pos)
-  " return ''
-" endfunction
-
 " Sweet Sweet FuGITive
 nmap <leader>gj :diffget //3<CR>
 nmap <leader>gf :diffget //2<CR>
@@ -260,11 +214,6 @@ nmap <leader>gs :G<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gD :Gdiff<CR>
 
-fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-endfun
 
 " Remap Emmet Leader
 let g:user_emmet_leader_key='<C-K>'
@@ -283,6 +232,12 @@ let g:user_emmet_settings = {
 \  },
 \}
 
+
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
 
 augroup highlight_yank
     autocmd!
