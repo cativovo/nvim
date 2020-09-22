@@ -60,7 +60,6 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-prettier',
   \ 'coc-tsserver',
-  \ 'coc-styled-components',
   \ ]
 
 call plug#end()
